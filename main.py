@@ -1,6 +1,7 @@
 # Importing pybgpstream to collect BGP updates
 # from various route collectors
 import pybgpstream as bgp
+from moas_detector import MoasDetector
 
 # Setting the time interval for the BGP data
 from datetime import datetime, timedelta
@@ -60,3 +61,30 @@ for elem in stream:
         for path in paths:
             print(f'AS path: {" -> ".join(path)}')
             print('')
+            
+################################ MOAS DETECTOR ###################################
+
+moas_detector = MoasDetector()
+
+# Creating a BGP instance
+stream = bgp.BGPStream(
+    project="routeviews-stream",
+    # Filtering with only BGP updates
+    record_type="updates",
+    filter="prefix more 210.180.0.0/16"
+)
+
+# Creating a dictionary 
+# to store the AS paths and origins
+as_paths = {}
+
+# Looping through each element in the stream
+for elem in stream:
+    # Extracting the as-path
+    as_path = elem.fields['as-path'].split(' ')
+    # Extracting the origin AS
+    origin_as = as_path[-1]
+    # Extracting the prefix
+    prefix = elem.fields['prefix']
+    # Pass the prefix and origin AS to the MOAS detector
+    moas_detector.process_update(prefix, origin_as)
