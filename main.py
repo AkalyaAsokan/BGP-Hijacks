@@ -1,4 +1,4 @@
-# Importing pybgpstream to collect BGP updates 
+# Importing pybgpstream to collect BGP updates
 # from various route collectors
 import pybgpstream as bgp
 
@@ -6,14 +6,14 @@ import pybgpstream as bgp
 from datetime import datetime, timedelta
 now = datetime.now()
 
-# Collecting roughly 15 days of data 
+# Collecting roughly 15 days of data
 # to identify the true origin of prefixes
 from_time = now - timedelta(days=1)
 until_time = now - timedelta(days=15)
 
 # Creating a BGP instance
 stream = bgp.BGPStream(
-    #from_time= from_time.strftime("%Y-%m-%d %H:%M:%S"), until_time=until_time.strftime("%Y-%m-%d %H:%M:%S"),
+    # from_time= from_time.strftime("%Y-%m-%d %H:%M:%S"), until_time=until_time.strftime("%Y-%m-%d %H:%M:%S"),
     from_time="2017-04-08 00:00:00", until_time="2017-04-09 00:00:00 UTC",
     # Collecting from Route View Singapore Collector and DC Collector
     collectors=["route-views.sg", "route-views.eqix"],
@@ -23,7 +23,7 @@ stream = bgp.BGPStream(
 )
 
 
-# Creating a dictionary 
+# Creating a dictionary
 # to store the AS paths and origins
 as_paths = {}
 
@@ -48,6 +48,15 @@ for elem in stream:
         as_paths[prefix] = [as_path]
 
     # Printing the information
-    print('Update to AS {0} from AS {1} for prefix {2} at {3}:'.format(peer_as, origin_as, prefix, timestamp))
+    print('Update to AS {0} from AS {1} for prefix {2} at {3}:'.format(
+        peer_as, origin_as, prefix, timestamp))
     print('AS Path: {0}'.format(as_path))
     print('')
+
+    # Printing the AS paths for each prefix
+    for prefix, paths in as_paths.items():
+        print(f'Prefix: {prefix}')
+        print(f'Total AS paths: {len(paths)}')
+        for path in paths:
+            print(f'AS path: {" -> ".join(path)}')
+            print('')
