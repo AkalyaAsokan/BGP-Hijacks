@@ -2,6 +2,7 @@
 # from various route collectors
 import pybgpstream as bgp
 from moas_detector import MoasDetector
+from sub_moas_detector import sub_MoAS
 
 # Setting the time interval for the BGP data
 from datetime import datetime, timedelta
@@ -88,3 +89,13 @@ for elem in stream:
     prefix = elem.fields['prefix']
     # Pass the prefix and origin AS to the MOAS detector
     moas_detector.process_update(prefix, origin_as)
+
+
+################################ Sub-MoAS DETECTOR ###################################
+sub_moas = sub_MoAS(
+    project="routeviews-stream",
+    record_type="updates",
+    filter="prefix more 210.180.0.0/16"
+)
+
+sub_moas.run()
