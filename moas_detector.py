@@ -1,25 +1,144 @@
+import numpy as np
+from datetime import datetime
+# Importing pybgpstream to collect BGP updates 
+# from various route collectors
+import pybgpstream
+# To AS information from an AS Number
+import json
+import requests
+# To plot graph
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+# To read from files
+import glob
+
 class MoasDetector:
     """
     MOAS Detector class that keeps track of multiple origin AS (MOAS) events
     """
 
     def __init__(self):
-        # Dictionary to store the prefixes with multiple origin ASes
-        self.moas_prefixes = {}
+        # Load the true prefixes from file
+        self.true_prefixes = {}
 
-    def process_update(self, prefix, origin_as):
-        """
-        Process an update for a given prefix and origin AS
-        """
-        # Check if the prefix is already in the MOAS dictionary
-        if prefix in self.moas_prefixes:
-            # If the prefix is already in the dictionary, check if the origin AS is new
-            if origin_as not in self.moas_prefixes[prefix]:
-                # If the origin AS is new, add it to the MOAS dictionary for this prefix
-                self.moas_prefixes[prefix].append(origin_as)
-                # If there are now two or more origin ASes for this prefix, print a MOAS event
-                if len(self.moas_prefixes[prefix]) >= 2:
-                    print(f"MOAS detected for prefix {prefix}: {', '.join(self.moas_prefixes[prefix])}")
+    def get_asn_name(self, asn):
+        response = requests.get(f"https://stat.ripe.net/data/as-names/data.json?resource=AS{asn}")
+        if response.ok:
+            data = json.loads(response.text)
+            print(data)
+            return data["data"]["names"][str(asn)]
         else:
-            # If the prefix is not yet in the MOAS dictionary, add it with the first origin AS
-            self.moas_prefixes[prefix] = [origin_as]
+            return "Error fetching ASN information"
+        
+    def update_plot(self, ax, prefix, x_data, y_data):
+        # Define a function to update the plot when an attack is detected
+
+        # Append the current time to the x data array
+        x_data.append(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        y_data.append(1)
+        ax.clear()
+        x_data = x_data[-10:]
+        y_data = y_data[-10:]
+        ax.set_ylim([-2,2])
+        ax.text(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), 1, prefix, size=12)
+        ax.plot(x_data, y_data, color="red", linewidth=2)
+        plt.xticks(rotation=90, ha='right')
+
+    def read_from_file(self):
+        as_paths = {}
+        for filename in glob.glob('training_data_*.txt'):
+            with open(filename) as f:
+                for line in f:
+                    if line.startswith('Prefix: '):
+                        if line.split()[1] not in self.true_prefixes:
+                            self.true_prefixes[line.split()[1]] = None
+                        curr_prefix = line.split()[1]
+                        if curr_prefix not in as_paths:
+                            as_paths[curr_prefix] = []
+                    elif line.startswith('AS path: '):
+                        as_path = line.split(': ')[-1].strip().split(' -> ')[-1]
+                        as_paths[curr_prefix].append(as_path)
+
+        # Choose most common AS path for each prefix
+        for prefix in self.true_prefixes:
+            curr_as_paths = as_paths.get(prefix, [])
+            if as_paths:
+                most_common_path = max(set(curr_as_paths), key=curr_as_paths.count)
+                self.true_prefixes[prefix] = most_common_path
+
+    
+    def start(self):
+        # Load the true prefixes from file
+        self.read_from_file()
+        print(self.true_prefixes)
+        fig, ax = plt.subplots()
+        ax.set_title(f"Prefix MOAS Attack Monitor")
+        ax.set_xlabel("Time")
+        ax.set_ylabel("MOAS Attack Status")
+
+        # Initialize the BGPStream and set the filtering options
+        stream = pybgpstream.BGPStream(
+            # accessing routeview-stream
+            project="routeviews-stream",
+            # Filtering with only BGP updates
+            record_type="updates",
+            # Using the same prefix that was used for training
+            filter="prefix more 210.180.0.0/16"
+        )
+
+        xs = []
+        ys = []
+        stream.start()
+
+        def animate(i, x_data:list, y_data:list):
+            record = stream.get_next_record()
+
+            # Check if the record is valid
+            if record:
+                try:
+                    elem = record.get_next_elem()
+
+                    # Extract the AS path and prefix from the BGP update
+                    as_path = elem.fields['as-path'].split()
+                    prefix = elem.fields['prefix']
+
+                    # Check for MOAS attacks
+                    if prefix in self.true_prefixes:
+                        if self.true_prefixes[prefix] != as_path[-1]:
+                            print('MOAS attack detected for prefix %s!' % prefix)
+                            print('AS path: %s' % ' -> '.join(as_path))
+                            print('AS that attacked: %s' % self.get_asn_name(as_path[-1]))
+                            self.update_plot(ax, prefix, x_data, y_data)
+                        else:
+                            # Append 0 to the y data array to represent no MOAS attack
+                            y_data.append(0)
+                            # Append the current time to the x data array
+                            x_data.append(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+                            # Update the plot with the new data
+                            ax.clear()
+                            x_data = x_data[-10:]
+                            y_data = y_data[-10:]
+                            ax.set_ylim([-2,2])
+                            ax.text(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), 0, prefix, size=12)
+                            ax.plot(x_data, y_data, color="green", linewidth=2)
+                            plt.xticks(rotation=90, ha='right')
+                    else:
+                        # Append 0 to the y data array to represent no MOAS attack
+                        y_data.append(0)
+                        # Append the current time to the x data array
+                        x_data.append(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+                        # Update the plot with the new data
+                        ax.clear()
+                        x_data = x_data[-10:]
+                        y_data = y_data[-10:]
+                        ax.set_ylim([-2,2])
+                        ax.text(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), 0, prefix, size=12)
+                        ax.plot(x_data, y_data, color="green", linewidth=2)
+                        plt.xticks(rotation=90, ha='right')
+
+                except:
+                    None
+
+        plt.style.use('fivethirtyeight')
+        ani = FuncAnimation(plt.gcf(), animate, fargs=(xs,ys), interval = 500)
+        plt.show()
