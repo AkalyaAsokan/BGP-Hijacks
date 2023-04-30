@@ -20,9 +20,9 @@ class FakePathDetector:
         # Looping through each element in the stream
         for elem in self.stream:
 
-            print("second trace")
+            #print("second trace")
             self.detect_fake_as_paths(elem)
-            print("fourth trace")
+            #print("fourth trace")
             # Extracting the as-path
             """
             try:
@@ -65,7 +65,7 @@ class FakePathDetector:
         
 
         fake_as_pattern = r"\b(0+|65534|65535|([2-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9]|1[0-1][0-9][0-9][0-9]|12[0-8][0-9][0-9])[ \t]*)+\b"
-
+        fake_as_pattern2 = r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[1-9][0-9]{0,3}|0)+$"
         
         
         # Loop through each element in the BGP stream
@@ -82,7 +82,7 @@ class FakePathDetector:
                 if origin_as not in self.prefixes[prefix]:
                     print("third trace")
                     # Check if the AS path matches the fake pattern
-                    if fake_as_pattern.match(as_path):
+                    if fake_as_pattern.match(as_path) or fake_as_pattern2.match(as_path):
                         print(f"Fake AS path detected for prefix {prefix}: {as_path}")
             
             # Add the origin AS to the dictionary for this prefix
@@ -98,7 +98,7 @@ class FakePathDetector:
 fake = FakePathDetector(
     collectors = ["route-views.sg", "route-views.eqix"],
     time_from = "2017-04-08 00:00:00",
-    time_to = "2017-04-10 00:00:00 UTC",
+    time_to = "2017-04-15 00:00:00 UTC",
     record_type="updates",
     filter="prefix more 210.0.0.0/16"
 )
