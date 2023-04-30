@@ -1,0 +1,449 @@
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682097426.725038
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682097426.725038
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682104450.834729
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682104450.834729
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682111446.055985
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682111446.055985
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682118796.673516
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682118796.673516
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682147632.294832
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682147632.294832
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682154625.077397
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682154625.077397
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682161857.008468
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682161857.008468
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682176568.114307
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682176568.114307
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682183800.205268
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682183800.205268
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682190730.60858
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682190730.60858
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682205103.114226
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682205103.114226
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682212154.221963
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682212154.221963
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682226706.565656
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682226706.565656
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682241078.802201
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682241078.802201
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682284378.062846
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682284378.062846
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682291548.776331
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682291548.776331
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682305861.384642
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682305861.384642
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682313183.660781
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682313183.660781
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682327615.79761
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682327615.79761
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682332615.492947
+AS Path: ['60924', '59605', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682332736.891278
+AS Path: ['60924', '59605', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682342078.406406
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682342078.406406
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 49544 from AS 3786 for prefix 210.180.224.0/19 at 1682348533.825456
+AS Path: ['49544', '3786']
+
+Update to AS 49544 from AS 3786 for prefix 210.180.0.0/19 at 1682348533.825456
+AS Path: ['49544', '3786']
+
+Update to AS 49544 from AS 9706 for prefix 210.180.192.0/19 at 1682348533.941544
+AS Path: ['49544', '4766', '9706']
+
+Update to AS 49544 from AS 9706 for prefix 210.180.128.0/18 at 1682348533.941544
+AS Path: ['49544', '4766', '9706']
+
+Update to AS 49544 from AS 9318 for prefix 210.180.96.0/19 at 1682348533.950509
+AS Path: ['49544', '9318']
+
+Update to AS 49544 from AS 45399 for prefix 210.180.126.0/24 at 1682348533.9816
+AS Path: ['49544', '9318', '45399']
+
+Update to AS 49544 from AS 23579 for prefix 210.180.119.0/24 at 1682348533.983293
+AS Path: ['49544', '4766', '23579', '23579']
+
+Update to AS 49544 from AS 4766 for prefix 210.180.64.0/19 at 1682348534.005529
+AS Path: ['49544', '4766']
+
+Update to AS 49544 from AS 132203 for prefix 210.180.74.0/23 at 1682348534.034912
+AS Path: ['49544', '3491', '132203']
+
+Update to AS 49544 from AS 9458 for prefix 210.180.71.0/24 at 1682348534.052546
+AS Path: ['49544', '9318', '9458']
+
+Update to AS 49544 from AS 9318 for prefix 210.180.96.0/23 at 1682348534.067779
+AS Path: ['49544', '9318']
+
+Update to AS 49544 from AS 4663 for prefix 210.180.48.0/20 at 1682348534.139089
+AS Path: ['49544', '1239', '3786', '3786', '3786', '4663', '4663', '4663', '4663', '4663', '4663']
+
+Update to AS 49544 from AS 4663 for prefix 210.180.32.0/20 at 1682348534.139089
+AS Path: ['49544', '1239', '3786', '3786', '3786', '4663', '4663', '4663', '4663', '4663', '4663']
+
+Update to AS 49544 from AS 4663 for prefix 210.180.32.0/19 at 1682348534.139178
+AS Path: ['49544', '1239', '3786', '3786', '3786', '4663', '4663', '4663']
+
+Update to AS 49544 from AS 4663 for prefix 210.180.61.0/24 at 1682348534.139178
+AS Path: ['49544', '1239', '3786', '3786', '3786', '4663', '4663', '4663']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682349220.092004
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682349220.092004
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682356412.44804
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682356412.44804
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682363500.505484
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682363500.505484
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682385069.162336
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682385069.162336
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 49544 from AS 9706 for prefix 210.180.192.0/19 at 1682406525.144966
+AS Path: ['49544', '4766', '9706']
+
+Update to AS 49544 from AS 9706 for prefix 210.180.128.0/18 at 1682406525.144966
+AS Path: ['49544', '4766', '9706']
+
+Update to AS 49544 from AS 23579 for prefix 210.180.119.0/24 at 1682406525.150965
+AS Path: ['49544', '4766', '23579', '23579']
+
+Update to AS 49544 from AS 4766 for prefix 210.180.64.0/19 at 1682406525.152252
+AS Path: ['49544', '4766']
+
+Update to AS 49544 from AS 23579 for prefix 210.180.119.0/24 at 1682422876.243073
+AS Path: ['49544', '4766', '23579', '23579']
+
+Update to AS 49544 from AS 9706 for prefix 210.180.192.0/19 at 1682422876.243564
+AS Path: ['49544', '4766', '9706']
+
+Update to AS 49544 from AS 9706 for prefix 210.180.128.0/18 at 1682422876.243564
+AS Path: ['49544', '4766', '9706']
+
+Update to AS 49544 from AS 4766 for prefix 210.180.64.0/19 at 1682422876.243951
+AS Path: ['49544', '4766']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682464196.036782
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682464196.036782
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682478765.308662
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682478765.308662
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 49544 from AS 9318 for prefix 210.180.96.0/19 at 1682480063.882903
+AS Path: ['49544', '9318']
+
+Update to AS 49544 from AS 45399 for prefix 210.180.126.0/24 at 1682480064.08226
+AS Path: ['49544', '9318', '45399']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682480072.917237
+AS Path: ['60924', '59605', '9318']
+
+Update to AS 49544 from AS 9458 for prefix 210.180.71.0/24 at 1682480083.366104
+AS Path: ['49544', '9318', '9458']
+
+Update to AS 49544 from AS 45399 for prefix 210.180.126.0/24 at 1682480291.74668
+AS Path: ['49544', '9318', '45399']
+
+Update to AS 49544 from AS 9318 for prefix 210.180.96.0/19 at 1682480291.74688
+AS Path: ['49544', '9318']
+
+Update to AS 49544 from AS 9458 for prefix 210.180.71.0/24 at 1682480292.373497
+AS Path: ['49544', '9318', '9458']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682480317.427145
+AS Path: ['60924', '59605', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682493215.315601
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682493215.315601
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682507393.908503
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682507393.908503
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682557835.509252
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682557835.509252
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682572557.461188
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682572557.461188
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 49544 from AS 3786 for prefix 210.180.224.0/19 at 1682575434.546352
+AS Path: ['49544', '3786']
+
+Update to AS 49544 from AS 3786 for prefix 210.180.0.0/19 at 1682575434.546352
+AS Path: ['49544', '3786']
+
+Update to AS 49544 from AS 3786 for prefix 210.180.224.0/19 at 1682590686.316784
+AS Path: ['49544', '3786']
+
+Update to AS 49544 from AS 3786 for prefix 210.180.0.0/19 at 1682590686.316784
+AS Path: ['49544', '3786']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682593896.771916
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682593896.771916
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/19 at 1682608449.63073
+AS Path: ['60924', '8966', '9318']
+
+Update to AS 60924 from AS 9318 for prefix 210.180.96.0/23 at 1682608449.63073
+AS Path: ['60924', '8966', '9318']
+
+Prefix: 210.180.96.0/19
+Total AS paths: 39
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 59605 -> 9318
+AS path: 60924 -> 59605 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 49544 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 49544 -> 9318
+AS path: 60924 -> 59605 -> 9318
+AS path: 49544 -> 9318
+AS path: 60924 -> 59605 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+
+Prefix: 210.180.96.0/23
+Total AS paths: 33
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 49544 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+AS path: 60924 -> 8966 -> 9318
+
+Prefix: 210.180.224.0/19
+Total AS paths: 3
+AS path: 49544 -> 3786
+AS path: 49544 -> 3786
+AS path: 49544 -> 3786
+
+Prefix: 210.180.0.0/19
+Total AS paths: 3
+AS path: 49544 -> 3786
+AS path: 49544 -> 3786
+AS path: 49544 -> 3786
+
+Prefix: 210.180.192.0/19
+Total AS paths: 3
+AS path: 49544 -> 4766 -> 9706
+AS path: 49544 -> 4766 -> 9706
+AS path: 49544 -> 4766 -> 9706
+
+Prefix: 210.180.128.0/18
+Total AS paths: 3
+AS path: 49544 -> 4766 -> 9706
+AS path: 49544 -> 4766 -> 9706
+AS path: 49544 -> 4766 -> 9706
+
+Prefix: 210.180.126.0/24
+Total AS paths: 3
+AS path: 49544 -> 9318 -> 45399
+AS path: 49544 -> 9318 -> 45399
+AS path: 49544 -> 9318 -> 45399
+
+Prefix: 210.180.119.0/24
+Total AS paths: 3
+AS path: 49544 -> 4766 -> 23579 -> 23579
+AS path: 49544 -> 4766 -> 23579 -> 23579
+AS path: 49544 -> 4766 -> 23579 -> 23579
+
+Prefix: 210.180.64.0/19
+Total AS paths: 3
+AS path: 49544 -> 4766
+AS path: 49544 -> 4766
+AS path: 49544 -> 4766
+
+Prefix: 210.180.74.0/23
+Total AS paths: 1
+AS path: 49544 -> 3491 -> 132203
+
+Prefix: 210.180.71.0/24
+Total AS paths: 3
+AS path: 49544 -> 9318 -> 9458
+AS path: 49544 -> 9318 -> 9458
+AS path: 49544 -> 9318 -> 9458
+
+Prefix: 210.180.48.0/20
+Total AS paths: 1
+AS path: 49544 -> 1239 -> 3786 -> 3786 -> 3786 -> 4663 -> 4663 -> 4663 -> 4663 -> 4663 -> 4663
+
+Prefix: 210.180.32.0/20
+Total AS paths: 1
+AS path: 49544 -> 1239 -> 3786 -> 3786 -> 3786 -> 4663 -> 4663 -> 4663 -> 4663 -> 4663 -> 4663
+
+Prefix: 210.180.32.0/19
+Total AS paths: 1
+AS path: 49544 -> 1239 -> 3786 -> 3786 -> 3786 -> 4663 -> 4663 -> 4663
+
+Prefix: 210.180.61.0/24
+Total AS paths: 1
+AS path: 49544 -> 1239 -> 3786 -> 3786 -> 3786 -> 4663 -> 4663 -> 4663
+
