@@ -22,11 +22,19 @@ moas_detector = MoasDetector()
 
 def moas():
     moas_detector.start()
+    
+    
+################################ MOAS DETECTOR ###################################
+sub_MoAS = sub_MoAS()
+def sub_moas():
+    sub_MoAS.start()
 
+    
 #################################### MAIN ########################################
 
 if __name__ == '__main__':
     # Visualising training data
     visualize_training_data()
     cProfile.run('moas()')
+    cProfile.run('sub_moas()')
     # plot graph
