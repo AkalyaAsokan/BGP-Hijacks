@@ -23,7 +23,20 @@ stream = bgp.BGPStream(
     # and a few more from bigger continents to get diverse data
     collectors=["route-views.sydney",
                 "route-views.sg",
-                "route-views2.routeviews.org"],
+                "route-views2.routeviews.org",
+                "route-views.bknix.routeviews.org",
+                "decix.jhb.routeviews.org", 
+                "route-views.phoix.routeviews.org",
+                "route-views.jinx",
+                "route-views.nwax",
+                "route-views.kixp",
+                "route-views.linx",
+                "route-views.saopaulo",
+                "route-views.perth",
+                "rrc00.ix.ru"
+                "route-views.sfmix",
+                "route-views.wide",
+               ],
     # Filtering with only BGP updates
     record_type="updates",
     # Filtering using an arbitrary prefix to reduce the amount of data obtained
