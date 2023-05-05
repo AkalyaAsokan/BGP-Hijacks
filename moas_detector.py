@@ -46,7 +46,7 @@ class MoasDetector:
 
     def read_from_file(self):
         as_paths = {}
-        for filename in glob.glob('training_data_*.txt'):
+        for filename in glob.glob('training_data_2017_2.txt'):
             with open(filename) as f:
                 for line in f:
                     if line.startswith('Prefix: '):
@@ -75,15 +75,27 @@ class MoasDetector:
         ax.set_title(f"Prefix MOAS Attack Monitor")
         ax.set_xlabel("Time")
         ax.set_ylabel("MOAS Attack Status")
+        # Setting the time interval for the BGP data
+        from datetime import datetime, timedelta
+        now = datetime.now()
+
+        # Collecting roughly 15 days of data 
+        # to identify the true origin of prefixes
+        from_time = now - timedelta(days=1)
+        until_time = now - timedelta(days=0)
 
         # Initialize the BGPStream and set the filtering options
         stream = pybgpstream.BGPStream(
             # accessing routeview-stream
-            project="routeviews-stream",
+            #from_time= from_time.strftime("%Y-%m-%d %H:%M:%S"), until_time=until_time.strftime("%Y-%m-%d %H:%M:%S"),
+            from_time= "2017-07-03 01:00:00", until_time="2017-07-18 01:00:00",
+            collectors=["route-views.sydney",
+                "route-views.sg",
+                "route-views2.routeviews.org"],
             # Filtering with only BGP updates
             record_type="updates",
             # Using the same prefix that was used for training
-            filter="prefix more 210.180.0.0/16"
+            #filter="prefix more 0.0.0.0/0"
         )
 
         xs = []
@@ -92,15 +104,17 @@ class MoasDetector:
 
         def animate(i, x_data:list, y_data:list):
             record = stream.get_next_record()
-
+            #print(record)
             # Check if the record is valid
             if record:
                 try:
                     elem = record.get_next_elem()
-
+                    print(elem)
                     # Extract the AS path and prefix from the BGP update
                     as_path = elem.fields['as-path'].split()
                     prefix = elem.fields['prefix']
+                    #prefix = '210.180.74.0/23'
+                    #as_path = ['37271', '4766']
 
                     # Check for MOAS attacks
                     if prefix in self.true_prefixes:
@@ -108,7 +122,8 @@ class MoasDetector:
                             print('MOAS attack detected for prefix %s!' % prefix)
                             print('AS path: %s' % ' -> '.join(as_path))
                             print('AS that attacked: %s' % self.get_asn_name(as_path[-1]))
-                            self.update_plot(ax, prefix, x_data, y_data)
+                            #self.update_plot(ax, prefix, x_data, y_data)
+                            raise Exception("Sorry, no numbers below zero")
                         else:
                             # Append 0 to the y data array to represent no MOAS attack
                             y_data.append(0)
