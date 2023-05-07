@@ -1,105 +1,76 @@
+import os
 import re
 import pybgpstream as bgp
 
 class FakePathDetector:
-    def __init__(self, collectors, time_from, time_to, record_type, filter):
+    def __init__(self, collectors, time_from, time_to, record_type, filter, training_files):
         # Dictionary to store the prefixes with multiple origin ASes
         self.prefixes = {}
+        self.established_paths = self.read_training_data(training_files)
+
         self.stream = bgp.BGPStream(
-            # from_time= from_time.strftime("%Y-%m-%d %H:%M:%S"), until_time=until_time.strftime("%Y-%m-%d %H:%M:%S"),
             from_time=time_from, until_time=time_to,
-            # Collecting from Route View Singapore Collector and DC Collector
             collectors=collectors,
-            # Filtering with only BGP updates
             record_type=record_type,
             filter=filter
         )
-        as_paths = {}
-        print("first trace")
 
         # Looping through each element in the stream
         for elem in self.stream:
-
-            #print("second trace")
             self.detect_fake_as_paths(elem)
-            #print("fourth trace")
-            # Extracting the as-path
-            """
-            try:
-                as_path = elem.fields['as-path'].split(' ')
-            
-            except KeyError:
-            # Ignore elements that don't have prefix or AS path fields
-                continue
-            # Extracting the origin AS
-            origin_as = as_path[-1]
-            # Extracting the peer AS
-            peer_as = elem.peer_asn
-            # Extracting the prefix
-            prefix = elem.fields['prefix']
-            # Extract the timestamp
-            timestamp = elem.time
 
-            # Updating the AS paths dictionary
-            if prefix in as_paths:
-                as_paths[prefix].append(as_path)
-            else:
-                as_paths[prefix] = [as_path]
+    def read_training_data(self, training_files):
+      established_paths = {}
 
-            # Printing the information
-            print('Update to AS {0} from AS {1} for prefix {2} at {3}:'.format(
-                peer_as, origin_as, prefix, timestamp))
-            print('AS Path: {0}'.format(as_path))
-            print('')
+      for file in training_files:
+          with open(file, 'r') as f:
+              lines = f.readlines()
+              for line in lines:
+                  if "AS Path:" in line:
+                      prefix_line = lines[lines.index(line) - 1]
+                      prefix = re.search(r'for prefix (.+?) at', prefix_line).group(1)
 
-            # Printing the AS paths for each prefix
-            for prefix, paths in as_paths.items():
-                print(f'Prefix: {prefix}')
-                print(f'Total AS paths: {len(paths)}')
-                for path in paths:
-                    print(f'AS path: {" -> ".join(path)}')
-                    print('') """
+                      as_path_match = re.search(r'\[(.*)\]', line)
+                      if as_path_match:
+                          as_path = as_path_match.group(1).split(', ')
+                      else:
+                          continue
 
+                      if prefix not in established_paths:
+                          established_paths[prefix] = []
+
+                      established_paths[prefix].append(as_path)
+
+      return established_paths
 
     def detect_fake_as_paths(self, elem):
-        
-
-        fake_as_pattern = r"\b(0+|65534|65535|([2-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9]|1[0-1][0-9][0-9][0-9]|12[0-8][0-9][0-9])[ \t]*)+\b"
-        fake_as_pattern2 = r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[1-9][0-9]{0,3}|0)+$"
-        
-        
-        # Loop through each element in the BGP stream
         try:
             prefix = elem.fields["prefix"]
-            as_path = elem.fields["as-path"]
-            origin_as = as_path.split()[-1]
-            
-            
-            # If the prefix is already in the dictionary, check if this is a fake path
-            if prefix in self.prefixes:
-                
-                # If the origin AS is different from the previously recorded origin ASes, check for fake AS path
-                if origin_as not in self.prefixes[prefix]:
-                    print("third trace")
-                    # Check if the AS path matches the fake pattern
-                    if fake_as_pattern.match(as_path) or fake_as_pattern2.match(as_path):
-                        print(f"Fake AS path detected for prefix {prefix}: {as_path}")
-            
-            # Add the origin AS to the dictionary for this prefix
-            self.prefixes.setdefault(prefix, set()).add(origin_as)
-        
+            as_path = elem.fields["as-path"].split()
+
+            # If the prefix is not in the established paths, it's a new prefix
+            if prefix not in self.established_paths:
+                print(f"New prefix detected: {prefix}")
+                return
+
+            # If the AS path is not in the established paths for this prefix, it's a fake path
+            if as_path not in self.established_paths[prefix]:
+                print(f"Fake AS path detected for prefix {prefix}: {as_path}")
+
         except KeyError:
             # Ignore elements that don't have prefix or AS path fields
-            print("Ignoring element with missing field(s)")
-            print(elem.fields)
             pass
 
+training_files = ["training_data_01 .txt", "training_data_02.txt", "training_data_03.txt", "training_data_04.txt", "training_data_05.txt", "training_data_06.txt"] 
 
 fake = FakePathDetector(
-    collectors = ["route-views.sg", "route-views.eqix"],
-    time_from = "2017-04-08 00:00:00",
-    time_to = "2017-04-15 00:00:00 UTC",
+    collectors=["route-views.sg", "route-views.eqix"],
+    time_from="2017-04-08 00:00:00",
+    time_to="2017-04-15 00:00:00 UTC",
     record_type="updates",
-    filter="prefix more 210.0.0.0/16"
+    filter="prefix more 210.0.0.0/16",
+    training_files=training_files
 )
+
+
 
