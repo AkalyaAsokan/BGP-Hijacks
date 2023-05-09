@@ -86,10 +86,7 @@ class FakePathDetector:
 
     def read_from_file(self) -> Dict[str, Graph]:
 
-        # Creating a conneected graph for each prefix
-        graphs = {}
-
-        with open("training_data_2017.txt") as f:
+        with open("training_data_2017_2.txt") as f:
             prefix = None
 
             # temp datastructure to create a dict of prefix and true origin mapping
@@ -106,7 +103,7 @@ class FakePathDetector:
                     prefix = line.split(": ")[1].strip()
 
                     # Creating a graph for each prefix
-                    graphs[prefix] = Graph()
+                    self.graphs[prefix] = Graph()
                 elif line.startswith("AS path: "):
                     temp = line.split(': ')[-1].strip().split(' -> ')[-1]
                     as_paths[curr_prefix].append(temp)
@@ -120,7 +117,7 @@ class FakePathDetector:
                         for i in range(len(as_numbers)-1):
                             u, v = as_numbers[i], as_numbers[i+1]
                             if u != v:
-                                graphs[prefix].add_edge(u, v)
+                                self.graphs[prefix].add_edge(u, v)
                     except:
                         None
             
@@ -136,6 +133,7 @@ class FakePathDetector:
 
         # Populate the true prefixes after reading data from file
         self.read_from_file()
+        print(self.graphs)
         fig, ax = plt.subplots()
         ax.set_title(f"Fake Path Hijack Monitor")
         ax.set_xlabel("Time")
@@ -177,6 +175,7 @@ class FakePathDetector:
             if record and count < 5000:
                 try:
                     elem = record.get_next_elem()
+                    print('Processing Record %d' % count)
 
                     # Extract the AS path, prefix and time from the BGP update
                     as_path = elem.fields['as-path'].split()
@@ -189,7 +188,7 @@ class FakePathDetector:
                     # Check for Fake Path hijacks
                     # Ignore if new prefix that does not exist in training data, comes in
                     if prefix in self.graphs:
-                        graph = self.graphs[prefix].graph
+                        #graph = self.graphs[prefix].graph
                         as_numbers = as_path
 
                         # If not same origin, then this may be a MOAS or Sub Moas attack. Not fake path
@@ -209,6 +208,7 @@ class FakePathDetector:
                                 print('AS that attacked: %s' % self.get_asn_name(as_path[-1]))
                                 # red spike in the plot when an attack is detected
                                 self.update_plot(time, ax, prefix, x_data, y_data, "red", 1)
+                                return
 
                         # green line is no attack is detected
                         self.update_plot(time, ax, prefix, x_data, y_data, "green", -1)
