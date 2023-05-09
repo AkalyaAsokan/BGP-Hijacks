@@ -61,7 +61,7 @@ class SubMoasDetector:
         # Reading data from file and creating a dict of prefix and unique mask + true origin mapping
         # as_paths is a temp datastructure that has a dictionary mapping from prefix to list of mask, ASN 
         as_paths = {}
-        for filename in glob.glob('training_data_2017.txt'):
+        for filename in glob.glob('training_data_2017_2.txt'):
             with open(filename) as f:
                 for line in f:
                     if line.startswith('Prefix: '):
@@ -73,7 +73,7 @@ class SubMoasDetector:
 
                         # Extracting origin ASN from testing data
                         origin_as = line.split(': ')[-1].strip().split(' -> ')[-1]
-                        
+
                         # Extracting Mask from testing data
                         mask = curr_prefix.split('/')[1]
                         as_path = {'mask': mask, 'origin_as': origin_as}
@@ -101,6 +101,7 @@ class SubMoasDetector:
 
         # Populate the true prefixes after reading data from file
         self.read_from_file()
+        print(self.prefix_dict)
         fig, ax = plt.subplots()
         ax.set_title(f"SubMOAS Attack Monitor")
         ax.set_xlabel("Time")
@@ -140,6 +141,7 @@ class SubMoasDetector:
 
             # Check if the record is valid and get the first 5000 records
             if record and count < 5000:
+                print('Processing Record %d' % count)
                 try:
                     elem = record.get_next_elem()
 
