@@ -42,28 +42,18 @@ class Visualize:
         # Define the list to store all lines from all files
         all_lines = []
 
-        # Initialize the file number to 1
-        file_num = 1
+        # Construct the filename for this iteration
+        filename = base_filename + '.txt'
+        #filename = 'training_data_042820231148.txt'
 
-        while True:
-            # Construct the filename for this iteration
-            filename = base_filename + '.txt'
-            #filename = 'training_data_042820231148.txt'
+        # Check if the file exists
+        if os.path.isfile(filename):
+            # Open the file and read its contents
+            with open(filename, 'r') as f:
+                lines = f.readlines()
 
-            # Check if the file exists
-            if os.path.isfile(filename):
-                # Open the file and read its contents
-                with open(filename, 'r') as f:
-                    lines = f.readlines()
-
-                # Add the lines to the list of all lines
-                all_lines.extend(lines)
-
-                # Increment the file number
-                file_num += 1
-            else:
-                # If the file doesn't exist, exit the loop
-                break
+            # Add the lines to the list of all lines
+            all_lines.extend(lines)
 
         return all_lines
     
