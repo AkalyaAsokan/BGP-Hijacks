@@ -115,7 +115,6 @@ if __name__ == '__main__':
     sub_moas_attacks = sub_moas(start_time, end_time)
     print(sub_moas_attacks)
 
-    # moas = 2 july (works), 2 train
     # Running the Fake Path detector with the specified start and end times and storing the result in fake_path_attacks
     fake_path_attacks = fake_path(start_time, end_time)
     print(fake_path_attacks)
@@ -125,7 +124,8 @@ if __name__ == '__main__':
     print(defcon_16_attacks)
 
     # Open a file called "attacks.txt" for writing
-    with open("attacks1.txt", "w") as f:
+    # The data stored in this file is not really used anywhere. This is just for debugging purposes.
+    with open("attacks.txt", "w") as f:
         # Write the attacks to the file using the print() function
         print("MOAS Attacks:", moas_attacks, file=f)
         print("Sub-MOAS Attacks:", sub_moas_attacks, file=f)
