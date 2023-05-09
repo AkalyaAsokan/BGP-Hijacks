@@ -3,44 +3,31 @@
 import pybgpstream as bgp
 
 # Setting the time interval for the BGP data
-from datetime import datetime, timedelta
-now = datetime.now()
+# from datetime import datetime, timedelta
+#now = datetime.now()
 
 # Collecting roughly 15 days of data 
 # to identify the true origin of prefixes
-from_time = now - timedelta(days=15)
-until_time = now - timedelta(days=1)
+# from_time = now - timedelta(days=15)
+# until_time = now - timedelta(days=1)
 
 # Opening a file
 ##### Each group member collected multiple files from different collectors 
 # for the same prefixes individually and then combined to reduce time taken to gather training data #####
-f = open('training_data_01.txt', 'w')
+f = open('training_data_2017.txt', 'w')
 
 # Creating a BGP instance
 stream = bgp.BGPStream(
-    from_time= from_time.strftime("%Y-%m-%d %H:%M:%S"), until_time=until_time.strftime("%Y-%m-%d %H:%M:%S"),
-    # Collecting from atleast one Route Collector from each continent 
-    # and a few more from bigger continents to get diverse data
+    #from_time= from_time.strftime("%Y-%m-%d %H:%M:%S"), until_time=until_time.strftime("%Y-%m-%d %H:%M:%S"),
+    from_time= "2017-06-30 01:00:00", until_time="2017-07-07 01:00:00",
+    # Collecting from a few prominent Route Collectors 
     collectors=["route-views.sydney",
                 "route-views.sg",
-                "route-views2.routeviews.org",
-                "route-views.bknix.routeviews.org",
-                "decix.jhb.routeviews.org", 
-                "route-views.phoix.routeviews.org",
-                "route-views.jinx",
-                "route-views.nwax",
-                "route-views.kixp",
-                "route-views.linx",
-                "route-views.saopaulo",
-                "route-views.perth",
-                "rrc00.ix.ru"
-                "route-views.sfmix",
-                "route-views.wide",
-               ],
+                "route-views2.routeviews.org"],
     # Filtering with only BGP updates
     record_type="updates",
     # Filtering using an arbitrary prefix to reduce the amount of data obtained
-    filter="prefix more 210.180.0.0/16"
+    #filter="prefix more 210.180.0.0/16"
 )
 
 # Creating a dictionary 
@@ -68,6 +55,7 @@ for elem in stream:
             as_paths[prefix] = [as_path]
 
         # Write the output to the file
+        # print('Update to AS {0} from AS {1} for prefix {2} at {3}\n'.format(peer_as, origin_as, prefix, timestamp))
         f.write('Update to AS {0} from AS {1} for prefix {2} at {3}\n'.format(peer_as, origin_as, prefix, timestamp))
         f.write('AS Path: {0}\n'.format(as_path))
         f.write('\n')
@@ -76,6 +64,7 @@ for elem in stream:
         continue
 
 # Printing the AS paths for each prefix
+# Data preprocessing for easier identification of attacks
 for prefix, paths in as_paths.items():
     f.write(f'Prefix: {prefix}\n')
     f.write(f'Total AS paths: {len(paths)}\n')
