@@ -27,32 +27,32 @@ def modifyList(lst):
         result.append([diff, lst[i][1]])
     return result
 
-# This function helps plot three graphs - Number of Attacks in the first 2000 Records, 3000 Records and 5000 Records
+# This function helps plot three graphs - Number of Attacks in the first 2000 Records (stored with suffix '_attack_1'), 3000 Records (stored with suffix '_attack_2') and 5000 Records (stored with suffix '_attack_3')
 def count_attacks(attack_list):
-    attack_times = {'{}_attacks_3'.format(attack_list): 0, '{}_attacks_1'.format(attack_list): 0, '{}_attacks_2'.format(attack_list): 0}
+    attack_times = {'{}_attacks_3'.format(attack_list[0][2]): 0, '{}_attacks_1'.format(attack_list[0][2]): 0, '{}_attacks_2'.format(attack_list[0][2]): 0}
     
     count = 0
     for lst in attack_list:
-        count = count + 1
+        count = count + lst[0]
         if(count > 2000):
-            attack_times['{}_attacks_2'.format(attack_list)] += 1
-            attack_times['{}_attacks_3'.format(attack_list)] += 1
+            attack_times['{}_attacks_2'.format(attack_list[0][2])] += 1
+            attack_times['{}_attacks_3'.format(attack_list[0][2])] += 1
         if(count > 3000):
-            attack_times['{}_attacks_3'.format(attack_list)] += 1
+            attack_times['{}_attacks_3'.format(attack_list[0][2])] += 1
         else:
-            attack_times['{}_attacks_1'.format(attack_list)] += 1
-            attack_times['{}_attacks_2'.format(attack_list)] += 1
-            attack_times['{}_attacks_3'.format(attack_list)] += 1
+            attack_times['{}_attacks_1'.format(attack_list[0][2])] += 1
+            attack_times['{}_attacks_2'.format(attack_list[0][2])] += 1
+            attack_times['{}_attacks_3'.format(attack_list[0][2])] += 1
     return attack_times
 
 def plot_attacks(attack_times):
-    fig = go.Figure(data=[go.Bar(name='Number of Attacks', x=['moas_attacks', 'sub_moas_attacks', 'fake_path_attacks', 'defcon_16_attacks'], y=[attack_times['moas_attacks_1'], attack_times['sub_moas_attacks_1'], attack_times['fake_path_attacks_1'], attack_times['defcon_16_attacks_1']])])
+    fig = go.Figure(data=[go.Bar(name='Number of Attacks', x=['moas_attacks', 'sub_moas_attacks', 'fake_path_attacks', 'defcon_16_attacks'], y=[attack_times['MOAS Attack_attacks_1'], attack_times['Sub MOAS Attack_attacks_1'], attack_times['Fake path Hijacks_attacks_1'], attack_times['Defcon #16 Hijacks_attacks_1']])])
     fig.update_layout(title='Number of Attacks for Each Type', xaxis_title='Type of Attack', yaxis_title='Number of Attacks in the first 2000 Records')
     fig.show()
-    fig = go.Figure(data=[go.Bar(name='Number of Attacks', x=['moas_attacks', 'sub_moas_attacks', 'fake_path_attacks', 'defcon_16_attacks'], y=[attack_times['moas_attacks_2'], attack_times['sub_moas_attacks_2'], attack_times['fake_path_attacks_2'], attack_times['defcon_16_attacks_2']])])
+    fig = go.Figure(data=[go.Bar(name='Number of Attacks', x=['moas_attacks', 'sub_moas_attacks', 'fake_path_attacks', 'defcon_16_attacks'], y=[attack_times['MOAS Attack_attacks_2'], attack_times['Sub MOAS Attack_attacks_2'], attack_times['Fake path Hijacks_attacks_2'], attack_times['Defcon #16 Hijacks_attacks_2']])])
     fig.update_layout(title='Number of Attacks for Each Type', xaxis_title='Type of Attack', yaxis_title='Number of Attacks in the first 3000 Records')
     fig.show()
-    fig = go.Figure(data=[go.Bar(name='Number of Attacks', x=['moas_attacks', 'sub_moas_attacks', 'fake_path_attacks', 'defcon_16_attacks'], y=[attack_times['moas_attacks_3'], attack_times['sub_moas_attacks_3'], attack_times['fake_path_attacks_3'], attack_times['defcon_16_attacks_3']])])
+    fig = go.Figure(data=[go.Bar(name='Number of Attacks', x=['moas_attacks', 'sub_moas_attacks', 'fake_path_attacks', 'defcon_16_attacks'], y=[attack_times['MOAS Attack_attacks_3'], attack_times['Sub MOAS Attack_attacks_3'], attack_times['Fake path Hijacks_attacks_3'], attack_times['Defcon #16 Hijacks_attacks_3']])])
     fig.update_layout(title='Number of Attacks for Each Type', xaxis_title='Type of Attack', yaxis_title='Number of Attacks in the first 5000 Records')
     fig.show()
 
@@ -93,10 +93,9 @@ defcon_16_detector = Defcon16Detector()
 
 def defcon_16(start_time, end_time):
     defcon_16_detector.start(start_time, end_time)
-    return modifyList(defcon_16_detector.attacks)
+    return modifyList(defcon_16_detector.attack)
 
 #################################### MAIN ########################################
-
 
 
 if __name__ == '__main__':
@@ -116,6 +115,7 @@ if __name__ == '__main__':
     sub_moas_attacks = sub_moas(start_time, end_time)
     print(sub_moas_attacks)
 
+    # moas = 2 july (works), 2 train
     # Running the Fake Path detector with the specified start and end times and storing the result in fake_path_attacks
     fake_path_attacks = fake_path(start_time, end_time)
     print(fake_path_attacks)
@@ -125,14 +125,15 @@ if __name__ == '__main__':
     print(defcon_16_attacks)
 
     # Open a file called "attacks.txt" for writing
-    '''with open("attacks.txt", "w") as f:
+    with open("attacks1.txt", "w") as f:
         # Write the attacks to the file using the print() function
         print("MOAS Attacks:", moas_attacks, file=f)
         print("Sub-MOAS Attacks:", sub_moas_attacks, file=f)
         print("Fake Path Attacks:", fake_path_attacks, file=f)
-        print("DEFCON 16 Attacks:", defcon_16_attacks, file=f)'''
+        print("DEFCON 16 Attacks:", defcon_16_attacks, file=f)
 
 
+    # Append it with type of attack for plotting graphs
     moas_attacks = [[count, asn, 'MOAS Attack'] for count, asn in moas_attacks]
     sub_moas_attacks = [[count, asn, 'Sub MOAS Attack'] for count, asn in sub_moas_attacks]
     fake_path_attacks = [[count, asn, 'Fake path Hijacks'] for count, asn in fake_path_attacks]
