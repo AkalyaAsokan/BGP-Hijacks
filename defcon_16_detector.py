@@ -113,7 +113,7 @@ class Defcon16Detector:
                     if curr_prefix.split('/')[0] not in as_paths:
                         as_paths[curr_prefix.split('/')[0]] = [curr_as_path]
                     else:
-                        as_paths[curr_prefix.split('/')[0]].append(as_path)
+                        as_paths[curr_prefix.split('/')[0]].append(curr_as_path)
                     as_path = line.split(": ")[1].strip()
                     try:
                         # Accommodating inconsistencies with datas
@@ -146,7 +146,8 @@ class Defcon16Detector:
     def start(self, start_time, end_time):
 
         # Populate the true prefixes after reading data from file
-        self.read_from_file()
+        self.graphs = self.read_from_file()
+        print(self.graphs)
         fig, ax = plt.subplots()
         ax.set_title(f"Defcon #16 Hijack Monitor")
         ax.set_xlabel("Time")
@@ -187,6 +188,7 @@ class Defcon16Detector:
             # Check if the record is valid and get the first 5000 records
             if record and count < 5000:
                 try:
+                    print('Processing Record %d' % count)
                     elem = record.get_next_elem()
 
                     # Extract the AS path, prefix and time from the BGP update
@@ -219,14 +221,15 @@ class Defcon16Detector:
                             # 1. The origin prefix is same
                             # 2. The mask of current record is longer than the ground truth
                             # 3. All the edges of the current record is not present in the graph computed for each prefix from training data
-                            if int(v) in self.graphs[prefix].graph[int(u)] and max_val == as_path[-1] and prefix.split('/')[1] > max_key:
+                            if int(v) not in self.graphs[prefix].graph[int(u)] and max_val == as_path[-1] and prefix.split('/')[1] > max_key:
                                 self.attack.append([count, v])
                                 print('Defcon #16 hijack detected for prefix %s!' % prefix)
-                                print(graph)
                                 print('AS path: %s' % ' -> '.join(as_path))
                                 print('AS that attacked: %s' % self.get_asn_name(as_path[-1]))
                                 # red spike in the plot when an attack is detected
                                 self.update_plot(time, ax, prefix, x_data, y_data, "red", 1)
+                                return
+
 
                         # green line is no attack is detected
                         self.update_plot(time, ax, prefix, x_data, y_data, "green", -1)
